@@ -48,7 +48,7 @@ pipeline {
             steps{
                 script{
                     echo "Deploy the code"
-                    echo "Deploy the app to ${params.NEWVERSION}"
+                    echo "Deploy the app to ${NEWAPP}"
                 }
             }
         }
