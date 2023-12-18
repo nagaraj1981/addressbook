@@ -33,6 +33,11 @@ pipeline {
                sh 'mvn test'
                }
             }
+            post { 
+                 always { 
+            junit 'target/surefile-reports/*.xml'
+        }
+    }
         }
         stage('Package'){
             steps{
