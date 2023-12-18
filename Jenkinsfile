@@ -12,7 +12,7 @@ pipeline {
             steps {
                 script{
                 echo "compiling in ${params.ENV} environment"
-                echo "compile the code"
+                sh 'mvn compile'
 
             }
             }
@@ -26,14 +26,15 @@ pipeline {
             steps{
                 script{
                echo "run the unit test cases"
+               sh 'mvn test'
                }
             }
         }
         stage('Package'){
             steps{
                 script{
-                echo "package the code"
                 echo "Pacakaging the app version ${params.APPVERSION}"
+                sh 'mvn compile'
             }
             }
         }
