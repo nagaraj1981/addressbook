@@ -37,6 +37,21 @@ pipeline {
             }
             }
         }
+        stage("Deploy"){
+            input{
+                message "Select the version to deploy"
+                ok "version selecte"
+                parameters{
+                    choice(name:'NEWAPP', choices:['1.2','1.3','1.4'])
+                }
+            }
+            steps{
+                script{
+                    echo "Packaging the code"
+                    echo "packaging the app version ${params.APPVERSION}"
+                }
+            }
+        }
             
     }
 }
