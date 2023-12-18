@@ -42,13 +42,13 @@ pipeline {
                 message "Select the version to deploy"
                 ok "version selecte"
                 parameters{
-                    choice(name:'NEWAPP', choices:['1.2','1.3','1.4'])
+                    choice(name:'NEWAPP', choices:['EKS','OnPrem','EC2'])
                 }
             }
             steps{
                 script{
-                    echo "Packaging the code"
-                    echo "packaging the app version ${params.APPVERSION}"
+                    echo "Deploy the code"
+                    echo "Deploy the app to ${params.NEWVERSION}"
                 }
             }
         }
