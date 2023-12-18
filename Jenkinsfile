@@ -35,15 +35,15 @@ pipeline {
             }
             post { 
                  always { 
-            junit 'target/surefile-reports/*.xml'
-        }
-    }
+                     junit 'target/surefile-reports/*.xml'
+                 }
+               }
         }
         stage('Package'){
             steps{
                 script{
                 echo "Pacakaging the app version ${params.APPVERSION}"
-                sh 'mvn compile'
+                sh 'mvn package'
             }
             }
         }
