@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent none
     tools{
         maven 'mymaven'
         jdk 'myjava'
@@ -13,6 +13,7 @@ pipeline {
 
     stages {
         stage('Compile') {
+            agent{label 'linux_slave'}
             steps {
                 script{
                 echo "compiling in ${params.ENV} environment"
@@ -22,6 +23,7 @@ pipeline {
             }
         }
         stage('UnitTest'){
+            agent{label 'linux_slave'}
             when{
                 expression{
                     params.executeTest == true
@@ -40,6 +42,7 @@ pipeline {
             }
         }
         stage('Package'){
+            agent any
             steps{
                 script{
                 echo "Pacakaging the app version ${params.APPVERSION}"
