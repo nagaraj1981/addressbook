@@ -42,7 +42,7 @@ pipeline {
             }
         }
         stage('Package'){
-            agent any
+            agent{label 'linux_slave'}
             steps{
                 script{
                 echo "Pacakaging the app version ${params.APPVERSION}"
