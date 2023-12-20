@@ -10,7 +10,7 @@ pipeline {
         booleanParam(name: 'executeTest', defaultValue: true, description: 'decide to run tc')
          choice(name: 'APPVERSION', choices: ['1.1', '1.2', '1.3'], description: 'Pick some App Version')
     }
-    ENVIRONMENT{
+    environment{
         BUILD_SERVER='ec2-user@172.31.9.95'
     }
 
