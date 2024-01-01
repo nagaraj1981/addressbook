@@ -60,7 +60,7 @@ pipeline {
                 sh "scp -o StrictHostKeyChecking=no server-config.sh ${BUILD_SERVER}:/home/ec2-user"
                 sh "ssh -o StrictHostKeyChecking=no ${BUILD_SERVER} 'bash server-config.sh ${IMAGE_NAME} ${BUILD_NUMBER}'"
                 sh "ssh ${BUILD_SERVER} sudo docker login -u ${USERNAME} -p ${PASSWORD}"
-                sh "ssh ${BUILD_SERVER} sudo docker push ${IMAGE_NAME} ${BUILD_NUMBER}"
+                sh "ssh ${BUILD_SERVER} sudo docker push ${IMAGE_NAME}:${BUILD_NUMBER}"
                 }
             }
             }
@@ -85,7 +85,7 @@ pipeline {
                 sh "ssh -o StrictHostKeyChecking=no ${DEPLOY_SERVER} sudo yum install docker -y'"
                 sh "ssh ${DEPLOY_SERVER} sudo systemctl start docker"
                 sh "ssh ${BUILD_SERVER} sudo docker login -u ${USERNAME} -p ${PASSWORD}"
-                sh "ssh ${DEPLOY_SERVER} sudo docker run -itd -P ${IMAGE_NAME} ${BUILD_NUMBER}"
+                sh "ssh ${DEPLOY_SERVER} sudo docker run -itd -P ${IMAGE_NAME}:${BUILD_NUMBER}"
                         }
 
             }
