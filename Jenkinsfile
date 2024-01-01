@@ -49,7 +49,7 @@ pipeline {
                 }
             }
         }
-        stage('Dockerize1'){
+        stage('Dockerize'){
             agent any
             steps{
                 script{
